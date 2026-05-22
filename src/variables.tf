@@ -77,6 +77,6 @@ variable "custom_from_dns_record_enabled" {
 
 variable "create_spf_record" {
   type        = bool
-  description = "If true the module will create an SPF (TXT) record on `domain` authorising `amazonses.com` to send on its behalf. Recommended when using `custom_from_subdomain` so DMARC can align via SPF as well as DKIM."
+  description = "If true the module will create an SPF (TXT) record authorising `amazonses.com` to send. The underlying `cloudposse/terraform-aws-ses` module places this record on the MAIL FROM subdomain (`<custom_from_subdomain>.<domain>`) when `custom_from_subdomain` is set, and on the identity `domain` otherwise — i.e. always on the domain SPF is actually evaluated against (the envelope-sender / Return-Path domain). Recommended for DMARC compliance via SPF alignment."
   default     = false
 }
