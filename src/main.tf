@@ -23,6 +23,11 @@ module "ses" {
   ses_user_enabled  = var.ses_user_enabled
   ses_group_enabled = var.ses_group_enabled
 
+  custom_from_subdomain              = var.custom_from_subdomain
+  custom_from_behavior_on_mx_failure = var.custom_from_behavior_on_mx_failure
+  custom_from_dns_record_enabled     = var.custom_from_dns_record_enabled
+  create_spf_record                  = var.create_spf_record
+
   context = module.this.context
 }
 
